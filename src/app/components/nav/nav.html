@@ -25,3 +25,29 @@
     <a [href]="phoneHref" class="nav__phone">{{ phoneDisplay }}</a>
   </div>
 </nav>
+
+<!-- ===================== MOBILE SLIDE-IN PANEL ===================== -->
+@if (menuOpen()) {
+  <div class="nav-backdrop" (click)="closeMenu()"></div>
+}
+
+<aside class="nav-panel" [class.nav-panel--open]="menuOpen()">
+  <button class="nav-panel__close" type="button" aria-label="Close menu" (click)="closeMenu()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+      <path d="M18 6 6 18M6 6l12 12" />
+    </svg>
+  </button>
+
+  <div class="nav-panel__phone">{{ phoneDisplay }}</div>
+
+  <div class="nav-panel__actions">
+    <a href="/rentals" (click)="closeMenu()">Explore Rentals</a>
+    <a [href]="phoneHref" (click)="closeMenu()">Call the Office</a>
+  </div>
+
+  <ul class="nav-panel__links">
+    @for (link of links; track link.href) {
+      <li><a [href]="link.href" (click)="closeMenu()">{{ link.label }}</a></li>
+    }
+  </ul>
+</aside>
