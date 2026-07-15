@@ -12,4 +12,16 @@ interface NavLink {
   styleUrl: './nav.scss',
 })
 
-export class Nav {}
+export class Nav {
+
+  protected readonly links: NavLink[] = [
+    { label: 'Home', href: '#home' },
+    { label: 'Services', href: '#services' },
+    { label: 'Rentals', href: '/rentals' },
+    { label: 'For Owners', href: '#owners' },
+    { label: 'About', href: '#about' },
+    { label: 'Contact', href: '#contact' },
+  ];
+
+
+}
