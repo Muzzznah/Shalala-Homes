@@ -1,1 +1,27 @@
-<p>nav works!</p>
+<nav class="nav" [class.nav--scrolled]="scrolled()">
+  <div class="nav__inner">
+
+    <!-- Compact (<=1280px): hamburger left, logo right -->
+    <button class="nav__menu-btn" type="button" aria-label="Open menu" (click)="openMenu()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+        <path d="M3 6h18M3 12h18M3 18h18" />
+      </svg>
+      <span>Menu</span>
+    </button>
+
+    <!-- Logo -->
+    <a href="#home" class="nav__logo" aria-label="Shalala Homes — home">
+      <img src="logo-white.png" alt="Shalala Homes" />
+    </a>
+
+    <!-- Desktop links (hidden on compact) -->
+    <ul class="nav__links">
+      @for (link of links; track link.href) {
+        <li><a [href]="link.href">{{ link.label }}</a></li>
+      }
+    </ul>
+
+    <!-- Desktop phone pill (hidden on compact) -->
+    <a [href]="phoneHref" class="nav__phone">{{ phoneDisplay }}</a>
+  </div>
+</nav>
