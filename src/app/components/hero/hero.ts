@@ -13,4 +13,5 @@ import { Component } from '@angular/core';
 
 export class Hero {
   protected readonly videoSrc = 'bg-video.mp4';
+  protected readonly posterSrc = 'hero-poster.jpg';
 }
