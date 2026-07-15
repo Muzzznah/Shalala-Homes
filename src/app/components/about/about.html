@@ -1,0 +1,43 @@
+<section id="about" class="about">
+  <div class="about__container">
+    <div class="about__grid">
+
+      <!-- Text column -->
+      <div class="about__text">
+        <span class="eyebrow">About Us</span>
+
+        <h2 class="about__title">Windsor's local property experts.</h2>
+
+        <p class="about__copy">
+          To us, property management means more than collecting rent. It means caring
+          for your investment, keeping good tenants in good homes, and handling the
+          day-to-day so you don't have to.
+        </p>
+        <p class="about__copy about__copy--last">
+          Founded in Windsor in 2022, Shalala Homes has grown to manage over 80
+          properties and lease more than 450 homes — serving thousands of owners and
+          tenants across the city and beyond.
+        </p>
+
+        <!-- Stats row -->
+        <div class="about__stats">
+          @for (stat of stats; track stat.label) {
+            <div class="about__stat">
+              <div class="about__stat-number">{{ stat.n }}</div>
+              <div class="about__stat-label">{{ stat.label }}</div>
+            </div>
+          }
+        </div>
+
+        <a href="#contact" class="pill pill--dark">Get in Touch</a>
+      </div>
+
+      <!-- Photo column -->
+      <div class="about__photo">
+        <img [src]="imageSrc" alt="Tudor-style home managed by Shalala Homes" />
+        <div class="about__photo-overlay"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
