@@ -1,1 +1,111 @@
-/* You can add global styles to this file, and also import other style files */
+/* Shalala Homes — Global Styles
+   Design tokens taken from the Figma prototype
+   Fonts: Cormorant Garamond (serif headings) + Jost (sans body)*/
+
+:root {
+  /* Brand palette */
+  --ink: #1a1f26;        /* primary text */
+  --navy: #0e2333;       /* icon strokes / dark accents */
+  --deep: #0a1a27;       /* scrolled nav background */
+  --muted: #6b7178;      /* body copy */
+  --silver: #9aa0a6;     /* eyebrows / labels */
+  --line: #e5e3dd;       /* hairline borders */
+  --soft: #f6f6f3;       /* alternate section background */
+
+  /* Type */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Jost', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans), serif;
+  font-weight: 300;
+  color: var(--ink);
+  background: #fff;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Shared section eyebrow label ("ABOUT US", "WHAT WE DO", ...) */
+.eyebrow {
+  display: block;
+  font-family: var(--font-sans), serif;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 20px;
+}
+
+/* Shared pill button */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans), serif;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 15px 32px;
+  border-radius: 999px;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.22s;
+}
+
+/* Dark pill on light backgrounds (About section) */
+.pill--dark {
+  color: var(--ink);
+  border-color: var(--ink);
+  background: transparent;
+}
+.pill--dark:hover {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* White filled pill on dark backgrounds (Hero primary) */
+.pill--outline {
+  background: #fff;
+  color: var(--ink);
+  border-color: #fff;
+}
+.pill--outline:hover {
+  background: transparent;
+  color: #fff;
+}
+
+/* Ghost pill on dark backgrounds (Hero secondary) */
+.pill--ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.pill--ghost:hover {
+  background: #fff;
+  color: var(--ink);
+  border-color: #fff;
+}

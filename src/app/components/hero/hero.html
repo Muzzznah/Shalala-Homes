@@ -1,0 +1,30 @@
+<section id="home" class="hero">
+  <!-- Background video -->
+  <video class="hero__video" autoplay muted loop playsinline [poster]="posterSrc">
+    <source [src]="videoSrc" type="video/mp4" />
+  </video>
+
+  <!-- Dark gradient overlay for text contrast -->
+  <div class="hero__overlay"></div>
+
+  <!-- Centered content -->
+  <div class="hero__content">
+    <span class="hero__eyebrow">Windsor-Based Property Management</span>
+
+    <h1 class="hero__title">
+      Maximizing value.<br />
+      Minimizing liability.
+    </h1>
+
+    <div class="hero__actions">
+      <a href="/rentals" class="pill pill--outline">Explore Rentals</a>
+      <a href="#contact" class="pill pill--ghost">Get in Touch</a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
