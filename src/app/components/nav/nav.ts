@@ -11,9 +11,7 @@ interface NavLink {
   templateUrl: './nav.html',
   styleUrl: './nav.scss',
 })
-
 export class Nav {
-
   /** true once the page has scrolled past the hero top (adds dark bg) */
   protected readonly scrolled = signal(false);
 
@@ -36,6 +34,7 @@ export class Nav {
   onScroll(): void {
     this.scrolled.set(window.scrollY > 60);
   }
+
 
   openMenu(): void {
     this.menuOpen.set(true);

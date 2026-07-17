@@ -7,10 +7,10 @@ import { Services } from './components/services/services';
 import { Owners } from './components/owners/owners';
 import { Testimonials } from './components/testimonials/testimonials';
 import { Footer } from './components/footer/footer';
+
 /* APP ROOT — Shalala Homes single-page layout
    Section order (matches prototype):
-   Nav -> Hero -> About -> Services
-   -> [For Owners: Hadi] -> [Contact: Xingbo] -> [Footer: Hadi] */
+   Nav -> Hero -> About -> Services -> Owners -> Testimonials -> Footer */
 
 @Component({
   selector: 'app-root',

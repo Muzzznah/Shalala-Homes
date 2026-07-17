@@ -42,7 +42,7 @@ export class Services {
     {
       id: 'rent',
       title: 'Rent Collection',
-      body: 'Tenants pay online with ease, and owners receive their rent transfer reliably on the 1st of every month.',
+      body: 'Tenants pay online with ease, and owners1 receive their rent transfer reliably on the 1st of every month.',
     },
     {
       id: 'inspect',
