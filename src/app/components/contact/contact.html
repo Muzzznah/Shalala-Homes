@@ -33,7 +33,11 @@
       </div>
 
 
-      <form class="contact__form" (submit)="$event.preventDefault()">
+      <form
+        class="contact__form"
+        action="https://formspree.io/f/xzdnelrp"
+        method="POST"
+      >
         <div class="contact__fields">
           <label><span class="sr-only">First name</span><input type="text" name="firstName" placeholder="First name" /></label>
           <label><span class="sr-only">Last name</span><input type="text" name="lastName" placeholder="Last name" /></label>
