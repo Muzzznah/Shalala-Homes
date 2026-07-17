@@ -18,6 +18,22 @@
     max-width: 650px;
   }
 
+  &__form {
+    padding-top: 23px;
+  }
+
+  &__fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 28px;
+    row-gap: 35px;
+  }
+
+  &__message {
+    margin-top: 33px;
+  }
+
+
   &__title {
     margin: 0;
     font-family: var(--font-serif);
@@ -92,5 +108,7 @@
 
 
 }
+
+
 
 
