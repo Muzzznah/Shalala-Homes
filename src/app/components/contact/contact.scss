@@ -35,6 +35,11 @@
     line-height: 1.9;
   }
 
+  &__details {
+    display: grid;
+    gap: 30px;
+  }
+
   h2 {
     margin: 0;
     font-family: var(--font-serif);
@@ -43,7 +48,47 @@
     letter-spacing: -.025em;
     line-height: 1.05;
   }
+  .contact-detail {
+    display: grid;
+    grid-template-columns: 62px 1fr;
+    align-items: center;
+    gap: 22px;
 
+    &__icon {
+      display: grid;
+      width: 60px;
+      height: 60px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: #9aa4ae;
+
+      svg {
+        width: 27px;
+        height: 27px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.35;
+      }
+    }
+
+    &__title {
+      display: block;
+      color: var(--ink);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    p {
+      margin: 5px 0 0;
+      color: #718096;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+  }
 
 
 }
