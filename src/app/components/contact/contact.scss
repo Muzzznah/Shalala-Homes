@@ -1,0 +1,51 @@
+.contact {
+  padding: clamp(88px, 12vw, 176px) 0 clamp(90px, 11vw, 160px);
+  background: #fff;
+
+  &__container {
+    max-width: 1680px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 6.1vw, 122px);
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+    gap: clamp(56px, 9vw, 156px);
+  }
+
+  &__intro {
+    max-width: 650px;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(48px, 4.1vw, 72px);
+    font-weight: 500;
+    letter-spacing: -.025em;
+    line-height: 1.05;
+  }
+
+  &__subtitle {
+    max-width: 650px;
+    margin: 32px 0 58px;
+    color: #596779;
+    font-size: clamp(17px, 1.35vw, 22px);
+    line-height: 1.9;
+  }
+
+  h2 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(48px, 4.1vw, 72px);
+    font-weight: 500;
+    letter-spacing: -.025em;
+    line-height: 1.05;
+  }
+
+
+
+}
+
+
