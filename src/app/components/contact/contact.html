@@ -32,14 +32,15 @@
         </div>
       </div>
 
+
       <form class="contact__form" (submit)="$event.preventDefault()">
         <div class="contact__fields">
-          <label>First name<input type="text" name="firstName" placeholder="First name" /></label>
-          <label>Last name<input type="text" name="lastName" placeholder="Last name" /></label>
-          <label>Email<input type="email" name="email" placeholder="Email" /></label>
-          <label>Phone<input type="tel" name="phone" placeholder="Phone" /></label>
+          <label><span class="sr-only">First name</span><input type="text" name="firstName" placeholder="First name" /></label>
+          <label><span class="sr-only">Last name</span><input type="text" name="lastName" placeholder="Last name" /></label>
+          <label><span class="sr-only">Email</span><input type="email" name="email" placeholder="Email" /></label>
+          <label><span class="sr-only">Phone</span><input type="tel" name="phone" placeholder="Phone" /></label>
         </div>
-        <label class="contact__message">Your message<textarea name="message" rows="5" placeholder="Tell us what you’re looking for…"></textarea></label>
+        <label class="contact__message"><span class="sr-only">Your message</span><textarea name="message" rows="5" placeholder="Tell us what you’re looking for…"></textarea></label>
         <button class="contact__submit" type="submit">Send message</button>
       </form>
 
