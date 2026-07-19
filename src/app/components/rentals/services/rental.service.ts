@@ -80,6 +80,35 @@ export class RentalService {
   }
 
   /**
+   * Upload photo files to Supabase Storage under posters/<folder>/
+   * and return their public URLs (ready for image_urls).
+   * @param files
+   * @param folder e.g. the listing's address slug ("326-elm-ave")
+   */
+  async uploadPhotos(files: File[], folder: string): Promise<string[]> {
+    const urls: string[] = [];
+
+    for (const file of files) {
+      // unique, URL-safe object path: posters/<folder>/<timestamp>-<name>
+      const safeName = file.name.toLowerCase().replace(/[^a-z0-9.]+/g, '-');
+      const path = `${folder}/${Date.now()}-${safeName}`;
+
+      const { error } = await this.supabase.storage
+        .from('posters')
+        .upload(path, file, { cacheControl: '3600', upsert: false });
+
+      if (error) {
+        throw error;
+      }
+
+      const { data } = this.supabase.storage.from('posters').getPublicUrl(path);
+      urls.push(data.publicUrl);
+    }
+
+    return urls;
+  }
+
+  /**
    * Delete rental and write to rentals table
    * @param id
    */

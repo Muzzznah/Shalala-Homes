@@ -35,6 +35,11 @@ export class AdminDashboard implements OnInit {
   /** id awaiting delete confirmation (two-click delete) */
   protected readonly confirmingDelete = signal<number | null>(null);
 
+  /** photo upload state */
+  protected readonly uploading = signal(false);
+  protected readonly dragOver = signal(false);
+  protected readonly uploadError = signal<string | null>(null);
+
   protected readonly form = this.fb.nonNullable.group({
     title: ['', Validators.required],
     address: ['', Validators.required],
@@ -130,6 +135,61 @@ export class AdminDashboard implements OnInit {
     } catch {
       this.errorMsg.set('Delete failed.');
     }
+  }
+
+  /** URL-safe folder for a listing's photos, derived from its address */
+  private addressSlug(): string {
+    return this.form.getRawValue().address
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '') || 'unsorted';
+  }
+
+  /** Shared upload path for both drag-drop and the file picker */
+  private async uploadFiles(files: File[]): Promise<void> {
+    const images = files.filter(f => f.type.startsWith('image/'));
+    if (images.length === 0) return;
+
+    if (!this.form.getRawValue().address.trim()) {
+      this.uploadError.set('Enter the address first — photos are filed under it.');
+      return;
+    }
+
+    this.uploading.set(true);
+    this.uploadError.set(null);
+    try {
+      const urls = await this.rentalService.uploadPhotos(images, this.addressSlug());
+      // append the new public URLs to the gallery textarea (one per line)
+      const current = this.form.getRawValue().image_urls_text.trim();
+      this.form.patchValue({
+        image_urls_text: current ? current + '\n' + urls.join('\n') : urls.join('\n'),
+      });
+    } catch {
+      this.uploadError.set('Upload failed — check your connection and try again.');
+    } finally {
+      this.uploading.set(false);
+    }
+  }
+
+  onDragOver(e: DragEvent): void {
+    e.preventDefault();
+    this.dragOver.set(true);
+  }
+
+  onDragLeave(): void {
+    this.dragOver.set(false);
+  }
+
+  async onDrop(e: DragEvent): Promise<void> {
+    e.preventDefault();
+    this.dragOver.set(false);
+    await this.uploadFiles(Array.from(e.dataTransfer?.files ?? []));
+  }
+
+  async onFilePick(e: Event): Promise<void> {
+    const input = e.target as HTMLInputElement;
+    await this.uploadFiles(Array.from(input.files ?? []));
+    input.value = ''; // allow re-picking the same file
   }
 
   async signOut(): Promise<void> {

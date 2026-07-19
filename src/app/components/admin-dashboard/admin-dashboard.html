@@ -22,8 +22,27 @@
         <input class="dash__input" type="text" placeholder="Province" formControlName="province" />
         <input class="dash__input" type="text" placeholder="Postal code (optional)" formControlName="postal_code" />
         <input class="dash__input" type="text" placeholder="Cover image URL (optional — defaults to first gallery photo)" formControlName="image_url" />
+        <!-- Drag-and-drop photo upload -> Supabase Storage -->
+        <div class="dash__dropzone"
+             [class.dash__dropzone--over]="dragOver()"
+             (dragover)="onDragOver($event)"
+             (dragleave)="onDragLeave()"
+             (drop)="onDrop($event)">
+          @if (uploading()) {
+            <span>Uploading photos…</span>
+          } @else {
+            <span>Drop house photos here, or
+              <label class="dash__pick">browse<input type="file" accept="image/*" multiple hidden (change)="onFilePick($event)" /></label>
+            </span>
+            <small>Photos upload automatically and are added to the gallery below.</small>
+          }
+        </div>
+        @if (uploadError()) {
+          <p class="dash__error">{{ uploadError() }}</p>
+        }
+
         <textarea class="dash__input dash__textarea" rows="4"
-                  placeholder="Gallery photo URLs — one per line (e.g. /posters/326-elm-ave.jpg)"
+                  placeholder="Gallery photo URLs — one per line (auto-filled by uploads above; first photo = cover)"
                   formControlName="image_urls_text"></textarea>
 
         @if (errorMsg()) {
