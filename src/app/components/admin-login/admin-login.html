@@ -1,1 +1,23 @@
-<p>admin-login works!</p>
+<section class="admin-login">
+  <div class="admin-login__card">
+    <span class="eyebrow">Shalala Homes</span>
+    <h1 class="admin-login__title">Admin Sign In</h1>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <div class="admin-login__field">
+        <input type="email" placeholder="Email" formControlName="email" class="admin-login__input" />
+      </div>
+      <div class="admin-login__field">
+        <input type="password" placeholder="Password" formControlName="password" class="admin-login__input" />
+      </div>
+
+      @if (status() === 'error') {
+        <p class="admin-login__error">Sign-in failed — check your email and password.</p>
+      }
+
+      <button type="submit" class="admin-login__submit" [disabled]="status() === 'signing-in'">
+        {{ status() === 'signing-in' ? 'Signing in…' : 'Sign In' }}
+      </button>
+    </form>
+  </div>
+</section>
