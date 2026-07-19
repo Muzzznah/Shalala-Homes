@@ -70,6 +70,12 @@
     &::placeholder { color: var(--silver); }
   }
 
+  &__textarea {
+    grid-column: 1 / -1;
+    resize: vertical;
+    font-family: var(--font-sans), sans-serif;
+  }
+
   &__error {
     grid-column: 1 / -1;
     font-family: var(--font-sans), sans-serif;

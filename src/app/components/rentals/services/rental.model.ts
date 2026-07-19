@@ -6,6 +6,7 @@ export interface Rental {
   province: string;
   postal_code: string;
   image_url: string | null;
+  image_urls: string[];
   created_at: string;
   updated_at: string;
 }

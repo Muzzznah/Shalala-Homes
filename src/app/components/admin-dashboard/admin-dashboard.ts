@@ -42,6 +42,7 @@ export class AdminDashboard implements OnInit {
     province: ['ON', Validators.required],
     postal_code: [''],
     image_url: [''],
+    image_urls_text: [''], // one photo URL per line -> image_urls array
   });
 
   async ngOnInit(): Promise<void> {
@@ -70,6 +71,7 @@ export class AdminDashboard implements OnInit {
       province: r.province,
       postal_code: r.postal_code,
       image_url: r.image_url ?? '',
+      image_urls_text: (r.image_urls ?? []).join('\n'),
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -87,8 +89,17 @@ export class AdminDashboard implements OnInit {
     this.saving.set(true);
     this.errorMsg.set(null);
 
-    const value = this.form.getRawValue();
-    const payload = { ...value, image_url: value.image_url || null };
+    const { image_urls_text, ...value } = this.form.getRawValue();
+    // split the textarea into a clean array of photo URLs
+    const image_urls = image_urls_text
+      .split('\n')
+      .map(u => u.trim())
+      .filter(u => u.length > 0);
+    const payload = {
+      ...value,
+      image_url: value.image_url || image_urls[0] || null, // cover = first photo
+      image_urls,
+    };
 
     try {
       const id = this.editingId();
