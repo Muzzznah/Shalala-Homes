@@ -12,7 +12,7 @@ import {Services} from './components/services/services';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Nav, Hero, About, Services],
+  imports: [Nav, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

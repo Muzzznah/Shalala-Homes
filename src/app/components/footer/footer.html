@@ -1,0 +1,67 @@
+<footer class="footer">
+  <div class="footer__inner">
+
+    <!-- Brand + social -->
+    <div class="footer__col footer__brand">
+      <div class="footer__logo">Shalala <em>Homes</em></div>
+      <p class="footer__tagline">
+        Windsor-based property management and leasing. Helping owners and
+        tenants since 2022.
+      </p>
+      <div class="footer__social">
+        <a href="https://www.facebook.com/share/184kgNinpF/?mibextid=wwXIfr" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M13.5 21v-7.6h2.55l.38-2.96h-2.93v-1.9c0-.86.24-1.44 1.47-1.44h1.57V4.8A21 21 0 0 0 14.6 4.7c-2.13 0-3.6 1.3-3.6 3.68v2.06H8.44v2.96h2.56V21z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/shalala_homes?igsh=cG94OGp6eng2N2d3" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/>
+            <circle cx="12" cy="12" r="3.6"/>
+            <circle cx="17.1" cy="6.9" r="0.9" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="tel:+12269754568" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 3a9 9 0 0 0-7.8 13.4L3 21l4.75-1.15A9 9 0 1 0 12 3Zm4.98 12.6c-.21.6-1.22 1.15-1.7 1.19-.44.05-.99.07-1.6-.1a10.3 10.3 0 0 1-3.62-2 11.4 11.4 0 0 1-2.4-2.98c-.25-.4-.5-.9-.5-1.42 0-.6.34-1.02.55-1.24.15-.16.36-.24.58-.24h.4c.15 0 .32-.02.5.36.2.42.68 1.5.74 1.6.06.12.1.26.02.42-.08.16-.13.26-.26.4-.13.14-.27.31-.39.41-.13.13-.26.27-.11.53.15.26.66 1.06 1.4 1.71.97.85 1.78 1.11 2.05 1.24.26.13.42.11.58-.07.16-.18.66-.75.83-1.02.17-.27.35-.22.58-.13.24.09 1.5.7 1.75.83.26.13.43.2.5.31.06.12.06.66-.15 1.28Z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Explore -->
+    <div class="footer__col">
+      <div class="footer__heading">Explore</div>
+      <ul class="footer__links">
+        @for (link of exploreLinks; track link.href) {
+          <li><a [href]="link.href">{{ link.label }}</a></li>
+        }
+      </ul>
+    </div>
+
+    <!-- Service Areas -->
+    <div class="footer__col">
+      <div class="footer__heading">Service Areas</div>
+      <ul class="footer__links">
+        @for (area of serviceAreas; track area) {
+          <li>{{ area }}</li>
+        }
+      </ul>
+    </div>
+
+    <!-- Get in Touch -->
+    <div class="footer__col">
+      <div class="footer__heading">Get in Touch</div>
+      <a [href]="phoneHref" class="footer__contact-line">{{ phoneDisplay }}</a>
+      <a [href]="'mailto:' + email" class="footer__contact-line">{{ email }}</a>
+      <div class="footer__contact-line footer__contact-line--muted">Windsor, Ontario</div>
+      <a [href]="phoneHref" class="pill pill--ghost footer__cta">Call Us</a>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <span>© {{ year }} Shalala Homes. All rights reserved.</span>
+    <span>Windsor, Ontario, Canada</span>
+  </div>
+</footer>
