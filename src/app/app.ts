@@ -4,6 +4,10 @@ import {Nav} from './components/nav/nav';
 import {Hero} from './components/hero/hero';
 import {About} from './components/about/about';
 import {Services} from './components/services/services';
+import {Owners} from './components/owners/owners';
+import {Testimonials} from './components/testimonials/testimonials';
+import {Footer} from './components/footer/footer';
+import {Contact} from './components/contact/contact';
 
 /* APP ROOT — Shalala Homes single-page layout
    Section order (matches prototype):
@@ -12,7 +16,7 @@ import {Services} from './components/services/services';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Nav, Hero, About, Services],
+  imports: [RouterOutlet, Nav, Hero, About, Services, Owners, Testimonials, Footer, Contact],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
