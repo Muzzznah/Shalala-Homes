@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Hero } from '../hero/hero';
 import { About } from '../about/about';
 import { Services } from '../services/services';
-import { Nav } from '../nav/nav';
 import { Testimonials } from '../testimonials/testimonials';
 import { Owners } from '../owners/owners';
 import { Footer } from '../footer/footer';
