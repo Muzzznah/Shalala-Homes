@@ -15,7 +15,7 @@
   }
 
   &__title {
-    font-family: var(--font-serif);
+    font-family: var(--font-serif), sans-serif;
     font-weight: 500;
     font-size: clamp(34px, 4vw, 50px);
     line-height: 1.08;
@@ -24,7 +24,7 @@
   }
 
   &__subtitle {
-    font-family: var(--font-sans);
+    font-family: var(--font-sans), sans-serif;
     font-weight: 300;
     color: var(--muted);
     font-size: 17px;
@@ -34,7 +34,7 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     border-top: 1px solid var(--line);
   }
 
@@ -43,8 +43,8 @@
     border-bottom: 1px solid var(--line);
     border-right: 1px solid var(--line);
 
-    /* No right border at the end of each 3-column row */
-    &:nth-child(3n) {
+    /* No right border at the end of each 4-column row */
+    &:nth-child(4n) {
       border-right: none;
     }
   }
@@ -64,7 +64,7 @@
   }
 
   &__card-title {
-    font-family: var(--font-serif);
+    font-family: var(--font-serif), sans-serif;
     font-weight: 500;
     font-size: 25px;
     line-height: 1.1;
@@ -73,7 +73,7 @@
   }
 
   &__card-body {
-    font-family: var(--font-sans);
+    font-family: var(--font-sans), sans-serif;
     font-weight: 300;
     color: var(--muted);
     font-size: 14.5px;
@@ -87,7 +87,7 @@
   .services__grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .services__card:nth-child(3n) {
+  .services__card:nth-child(4n) {
     border-right: 1px solid var(--line);
   }
   .services__card:nth-child(2n) {

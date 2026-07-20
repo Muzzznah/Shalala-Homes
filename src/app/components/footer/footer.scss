@@ -139,3 +139,11 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Staff login — quieter than the public links */
+.footer__admin-link {
+  opacity: 0.55;
+  font-size: 12px;
+
+  &:hover { opacity: 1; }
+}

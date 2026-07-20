@@ -1,0 +1,187 @@
+/* ADMIN DASHBOARD — utilitarian, on-brand */
+.dash {
+  min-height: 100vh;
+  background: var(--soft);
+  padding: 130px 24px 80px;
+
+  &__container { max-width: 1000px; margin: 0 auto; }
+
+  &__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 34px;
+  }
+
+  &__title {
+    font-family: var(--font-serif), serif;
+    font-weight: 500;
+    font-size: 40px;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  &__signout {
+    font-family: var(--font-sans), sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 10px 22px;
+    color: var(--muted);
+    cursor: pointer;
+
+    &:hover { border-color: var(--ink); color: var(--ink); }
+  }
+
+  &__panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: 30px;
+    margin-bottom: 40px;
+  }
+
+  &__panel-title {
+    font-family: var(--font-serif), sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    margin: 0 0 20px;
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  &__input {
+    border: none;
+    border-bottom: 1px solid var(--line);
+    padding: 12px 2px;
+    font-family: var(--font-sans), sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    background: transparent;
+    outline: none;
+
+    &:focus { border-bottom-color: var(--ink); }
+    &::placeholder { color: var(--silver); }
+  }
+
+  &__dropzone {
+    grid-column: 1 / -1;
+    border: 1.5px dashed var(--line);
+    padding: 26px;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 14px;
+    color: var(--muted);
+    transition: border-color 0.2s, background 0.2s;
+
+    small {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--silver);
+    }
+
+    &--over {
+      border-color: var(--ink);
+      background: #fff;
+      color: var(--ink);
+    }
+  }
+
+  &__pick {
+    color: var(--ink);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &__textarea {
+    grid-column: 1 / -1;
+    resize: vertical;
+    font-family: var(--font-sans);
+  }
+
+  &__error {
+    grid-column: 1 / -1;
+    font-family: var(--font-sans), sans-serif;
+    font-size: 13px;
+    color: #b3402e;
+    margin: 0;
+  }
+
+  &__form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 12px;
+  }
+
+  &__btn {
+    font-family: var(--font-sans), sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    background: none;
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 12px 26px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover:not(:disabled) { background: var(--ink); color: #fff; }
+    &:disabled { opacity: 0.6; }
+
+    &--primary { background: var(--ink); color: #fff;
+      &:hover:not(:disabled) { background: transparent; color: var(--ink); } }
+    &--small { padding: 7px 14px; font-size: 11px; }
+    &--danger { border-color: #b3402e; color: #b3402e;
+      &:hover { background: #b3402e; color: #fff; } }
+  }
+
+  &__state {
+    text-align: center;
+    font-family: var(--font-sans), sans-serif;
+    color: var(--muted);
+    padding: 30px;
+  }
+
+  &__table {
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-collapse: collapse;
+    font-family: var(--font-sans), sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+
+    th {
+      text-align: left;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--silver);
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
+    }
+  }
+
+  &__row-actions { display: flex; gap: 8px; }
+}
+
+@media (max-width: 640px) {
+  .dash__form { grid-template-columns: 1fr; }
+  .dash__table { font-size: 12px; }
+}
