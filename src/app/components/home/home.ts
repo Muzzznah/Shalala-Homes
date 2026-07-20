@@ -6,7 +6,7 @@ import { Nav } from '../nav/nav';
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, About, Services, Nav],
+  imports: [Hero, About, Services],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
