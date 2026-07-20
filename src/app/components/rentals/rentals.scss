@@ -135,3 +135,64 @@ $silver: #9aa0a6;
     padding: 0 20px;
   }
 }
+
+$rental-ink: #1a1f26;
+$whatsapp-green: #128c4b;
+
+.rental-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.rental-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 8px;
+  border: 1px solid;
+  border-radius: 999px;
+  background: transparent;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background 0.2s,
+    color 0.2s;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+}
+
+.rental-pill--whatsapp {
+  border-color: $whatsapp-green;
+  color: $whatsapp-green;
+
+  &:hover {
+    background: $whatsapp-green;
+    color: white;
+  }
+}
+
+.rental-pill--sms {
+  border-color: $rental-ink;
+  color: $rental-ink;
+
+  &:hover {
+    background: $rental-ink;
+    color: white;
+  }
+}
+
+@media (max-width: 500px) {
+  .rental-actions {
+    grid-template-columns: 1fr;
+  }
+}
