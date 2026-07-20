@@ -37,37 +37,9 @@
     <div class="rentals__grid">
       @for (r of visible(); track r.id) {
         <article class="poster">
-          <div class="poster__img"
-               (touchstart)="onTouchStart(r, $event)"
-               (touchend)="onTouchEnd(r, $event)">
-            @if (photos(r).length > 0) {
-              <!-- Sliding track: all photos side by side, shifted by the current index -->
-              <div class="poster__track" [style.transform]="'translateX(-' + indexOf(r) * 100 + '%)'">
-                @for (photo of photos(r); track photo) {
-                  <img [src]="photo" [alt]="r.address + ' photo'" loading="lazy" class="poster__slide" />
-                }
-              </div>
-
-              <!-- Arrows + dots only when there is more than one photo -->
-              @if (photos(r).length > 1) {
-                <button type="button" class="poster__nav poster__nav--prev"
-                        aria-label="Previous photo" (click)="step(r, -1)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-                </button>
-                <button type="button" class="poster__nav poster__nav--next"
-                        aria-label="Next photo" (click)="step(r, 1)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
-                </button>
-                <div class="poster__dots">
-                  @for (photo of photos(r); track $index) {
-                    <button type="button" class="poster__dot"
-                            [class.poster__dot--active]="indexOf(r) === $index"
-                            [attr.aria-label]="'Photo ' + ($index + 1)"
-                            (click)="goTo(r, $index)"></button>
-                  }
-                </div>
-                <span class="poster__count">{{ indexOf(r) + 1 }} / {{ photos(r).length }}</span>
-              }
+          <div class="poster__img">
+            @if (cover(r)) {
+              <img [src]="cover(r)" [alt]="r.address + ' rental poster'" loading="lazy" />
             } @else {
               <svg viewBox="0 0 24 24" fill="none" stroke="#9FB4C6" stroke-width="1.2" class="poster__ico">
                 <path d="M3 11l9-8 9 8" /><path d="M5 10v10h14V10" /><path d="M9 20v-6h6v6" />
