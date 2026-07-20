@@ -11,11 +11,9 @@ interface NavLink {
   templateUrl: './nav.html',
   styleUrl: './nav.scss',
 })
-
 export class Nav {
-
   /** true once the page has scrolled past the hero top (adds dark bg) */
-  protected readonly scrolled = signal(false);
+  protected readonly scrolled = signal(window.location.pathname !== '/' || window.scrollY > 60);
 
   /** true while the mobile slide-in panel is open */
   protected readonly menuOpen = signal(false);
@@ -34,7 +32,7 @@ export class Nav {
 
   @HostListener('window:scroll')
   onScroll(): void {
-    this.scrolled.set(window.scrollY > 60);
+    this.scrolled.set(window.location.pathname !== '/' || window.scrollY > 60);
   }
 
   openMenu(): void {

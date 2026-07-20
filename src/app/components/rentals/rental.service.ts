@@ -29,10 +29,7 @@ export class RentalService {
    * @param id
    */
   async getRental(id: number): Promise<Rental> {
-    const { data, error } = await this.supabase.from('rentals')
-      .select('*')
-      .eq('id', id)
-      .single();
+    const { data, error } = await this.supabase.from('rentals').select('*').eq('id', id).single();
 
     if (error) {
       throw error;
@@ -46,11 +43,7 @@ export class RentalService {
    * @param rental
    */
   async createRental(rental: CreateRental): Promise<Rental> {
-    const { data, error } = await this.supabase
-      .from('rentals')
-      .insert(rental)
-      .select()
-      .single();
+    const { data, error } = await this.supabase.from('rentals').insert(rental).select().single();
 
     if (error) {
       throw error;
@@ -67,7 +60,7 @@ export class RentalService {
   async updateRental(id: number, changes: UpdateRental): Promise<Rental> {
     const { data, error } = await this.supabase
       .from('rentals')
-      .update({...changes})
+      .update({ ...changes })
       .eq('id', id)
       .select()
       .single();
@@ -89,5 +82,29 @@ export class RentalService {
     if (error) {
       throw error;
     }
+  }
+
+  /**
+   * Upload rental image and return public URL
+   * @param file
+   */
+  async uploadRentalImage(file: File): Promise<string> {
+    const extension = file.name.split('.').pop()?.toLowerCase() ?? 'jpg';
+
+    const filePath = `rentals/${crypto.randomUUID()}.${extension}`;
+
+    const { error } = await this.supabase.storage.from('rental-images').upload(filePath, file, {
+      cacheControl: '3600',
+      contentType: file.type,
+      upsert: false,
+    });
+
+    if (error) {
+      throw error;
+    }
+
+    const { data } = this.supabase.storage.from('rental-images').getPublicUrl(filePath);
+
+    return data.publicUrl;
   }
 }

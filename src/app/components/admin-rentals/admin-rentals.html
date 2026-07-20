@@ -1,0 +1,152 @@
+<section class="admin-page">
+  <header>
+    <p>Owner dashboard</p>
+
+    <h1>
+      {{ editingRentalId === null ? 'Add Rental' : 'Edit Rental' }}
+    </h1>
+  </header>
+
+  <form
+    class="rental-form"
+    [formGroup]="rentalForm"
+    (ngSubmit)="submit()"
+  >
+    <label for="title">Title</label>
+    <input
+      id="title"
+      type="text"
+      formControlName="title"
+    />
+
+    <label for="address">Address</label>
+    <input
+      id="address"
+      type="text"
+      formControlName="address"
+    />
+
+    <label for="city">City</label>
+    <input
+      id="city"
+      type="text"
+      formControlName="city"
+    />
+
+    <label for="province">Province</label>
+    <input
+      id="province"
+      type="text"
+      formControlName="province"
+    />
+
+    <label for="postal-code">Postal code</label>
+    <input
+      id="postal-code"
+      type="text"
+      formControlName="postal_code"
+    />
+
+    <label for="rental-image">Rental image</label>
+
+    <input
+      id="rental-image"
+      type="file"
+      accept="image/*"
+      (change)="onImageSelected($event)"
+    />
+
+    @if (editingRentalId !== null && rentalForm.controls.image_url.value) {
+      <div class="current-image">
+        <p>Current image:</p>
+
+        <img
+          [src]="rentalForm.controls.image_url.value"
+          alt="Current rental image"
+        />
+      </div>
+    }
+
+    <div class="form-actions">
+      <button
+        type="submit"
+        [disabled]="rentalForm.invalid || isSubmitting"
+      >
+        @if (isSubmitting) {
+          Saving...
+        } @else if (editingRentalId === null) {
+          Create rental
+        } @else {
+          Save changes
+        }
+      </button>
+
+      @if (editingRentalId !== null) {
+        <button
+          type="button"
+          (click)="cancelEdit()"
+        >
+          Cancel
+        </button>
+      }
+    </div>
+  </form>
+
+  @if (errorMessage) {
+    <p class="error-message">{{ errorMessage }}</p>
+  }
+
+  @if (successMessage) {
+    <p class="success-message">{{ successMessage }}</p>
+  }
+
+  <hr />
+
+  <h2>Existing Rentals</h2>
+
+  @if (isLoading) {
+    <p>Loading rentals...</p>
+  } @else if (rentals.length === 0) {
+    <p>No rentals have been created.</p>
+  } @else {
+    <div class="rental-list">
+      @for (rental of rentals; track rental.id) {
+        <article class="rental-item">
+          @if (rental.image_url) {
+            <img
+              [src]="rental.image_url"
+              [alt]="rental.title"
+            />
+          }
+
+          <div>
+            <h3>{{ rental.title }}</h3>
+
+            <p>
+              {{ rental.address }},
+              {{ rental.city }},
+              {{ rental.province }}
+              {{ rental.postal_code }}
+            </p>
+          </div>
+
+          <div class="rental-actions">
+            <button
+              type="button"
+              (click)="editRental(rental)"
+            >
+              Edit
+            </button>
+
+            <button
+              type="button"
+              (click)="deleteRental(rental)"
+            >
+              Delete
+            </button>
+          </div>
+        </article>
+      }
+    </div>
+  }
+</section>

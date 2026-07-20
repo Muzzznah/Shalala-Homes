@@ -1,1 +1,49 @@
-<p>rentals works!</p>
+<section class="rentals-page">
+  <div class="rentals-container">
+    <header class="rentals-intro">
+      <span>Available Now</span>
+      <h1>Featured Rentals</h1>
+      <p>
+        Browse our latest listings and contact us for more information.
+      </p>
+    </header>
+
+    @if (isLoading) {
+      <p class="status-message">Loading rentals...</p>
+    } @else if (errorMessage) {
+      <p class="status-message">{{ errorMessage }}</p>
+    } @else if (rentals.length === 0) {
+      <p class="status-message">No rentals are currently available.</p>
+    } @else {
+      <div class="rental-grid">
+        @for (rental of rentals; track rental.id) {
+          <article class="rental-card">
+            <div class="rental-image">
+              @if (rental.image_url) {
+                <img
+                  [src]="rental.image_url"
+                  [alt]="rental.title"
+                />
+              } @else {
+                <div class="image-placeholder">
+                  <span>{{ rental.city }}, {{ rental.province }}</span>
+                  <h2>{{ rental.title }}</h2>
+                </div>
+              }
+            </div>
+
+            <div class="rental-content">
+              <h2>{{ rental.title }}</h2>
+
+              <p>
+                {{ rental.address }}<br />
+                {{ rental.city }}, {{ rental.province }}
+                {{ rental.postal_code }}
+              </p>
+            </div>
+          </article>
+        }
+      </div>
+    }
+  </div>
+</section>
