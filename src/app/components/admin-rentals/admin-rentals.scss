@@ -1,0 +1,59 @@
+.admin-page {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 8rem 2rem 4rem;
+}
+
+.rental-form {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 600px;
+}
+
+input,
+button {
+  padding: 0.75rem;
+}
+
+.form-actions,
+.rental-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.rental-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.rental-item {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #ddd;
+  padding: 1rem;
+}
+
+.error-message {
+  color: #b00020;
+}
+
+.success-message {
+  color: #16752a;
+}
+
+.current-image {
+  margin: 0.5rem 0 1rem;
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+
+  img {
+    display: block;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+  }
+}
