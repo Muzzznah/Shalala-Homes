@@ -6,10 +6,11 @@ import { Testimonials } from '../testimonials/testimonials';
 import { Owners } from '../owners/owners';
 import { Footer } from '../footer/footer';
 import { FeaturedRentals } from '../featured-rentals/featured-rentals';
+import { Contact } from '../contact/contact';
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, About, Services, Testimonials, Owners, Footer, FeaturedRentals],
+  imports: [Hero, About, Services, Testimonials, Owners, Footer, FeaturedRentals, Contact],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
